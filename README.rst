@@ -1,5 +1,5 @@
-SQLFormatter: Beautiful colored SQL staments for logging
-========================================================
+SQLFormatter: Beautiful colored SQL statements for logging
+==========================================================
 
 Logging your SQL to the console helps you understand whats going on under the ORM.
 
