@@ -16,6 +16,13 @@ However, queries can get pretty big resulting on a code wall.
     :alt: Number of PyPI downloads
 
 
+How it looks like?
+------------------
+
+.. image:: screenshot.png
+    :alt: Screenshot
+
+
 Install
 -------
 
@@ -28,7 +35,7 @@ Usage
 
 If you're using Django, simply add it to your LOGGING settings:
 
-   .. code-block:: python
+.. code-block:: python
 
     LOGGING = {
         'version': 1,
