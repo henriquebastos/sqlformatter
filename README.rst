@@ -19,7 +19,7 @@ However, queries can get pretty big resulting on a code wall.
 How it looks like?
 ------------------
 
-.. image:: screenshot.png
+.. image:: https://raw.githubusercontent.com/henriquebastos/sqlformatter/master/screenshot.png
     :alt: Screenshot
 
 
