@@ -1,6 +1,7 @@
 # coding: utf-8
 import logging
 import sqlparse
+import os
 from pygments import highlight
 from pygments.lexers import SqlLexer
 from pygments.formatters import TerminalFormatter
@@ -16,4 +17,6 @@ class SqlFormatter(logging.Formatter):
     def format(self, record):
         msg = super(SqlFormatter, self).format(record)
         msg = sqlparse.format(record.msg, reindent=True, keyword_case='upper')
+        if os.name == 'nt':
+            return msg
         return highlight(msg, LEXER, FORMATTER)
