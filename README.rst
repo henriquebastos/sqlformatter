@@ -7,12 +7,10 @@ However, queries can get pretty big resulting on a code wall.
 
 *SQLFormater* is a logging formatter that *idents* and *colorize* your SQL statements making everything legible again.
 
-.. image:: https://pypip.in/v/sqlformatter/badge.png
-    :target: https://crate.io/packages/sqlformatter/
+.. image:: https://img.shields.io/pypi/v/sqlformatter.svg
     :alt: Latest PyPI version
 
-.. image:: https://pypip.in/d/sqlformatter/badge.png
-    :target: https://crate.io/packages/sqlformatter/
+.. image:: https://img.shields.io/pypi/dm/sqlformatter.svg
     :alt: Number of PyPI downloads
 
 
@@ -33,7 +31,31 @@ Install
 Usage
 -----
 
-If you're using Django, simply add it to your LOGGING settings:
+There are 2 ways of using it.
+
+Temporarily enable it during a console session
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+During a console session it maybe interesting to show your queries while experimenting.
+
+You can toggle sql output logging by calling the helper function `logdb`.
+
+.. code-block:: python
+
+    from sqlformatter import logdb
+    # Enable
+    logdb()
+    
+    # Run your query
+    MyModel.objects.all() 
+    
+    # Disable
+    logdb()
+
+Add it to your Django Logging settings
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You can add it to yout Django LOGGING settings:
 
 .. code-block:: python
 
@@ -61,6 +83,13 @@ If you're using Django, simply add it to your LOGGING settings:
         }
     }
 
+Customization
+-------------
+
+You can passa many options to customize `SqlFormatter` either instantiating it 
+directly or calling the `logdb` helper.
+
+Check out the source code.
 
 License
 =======
