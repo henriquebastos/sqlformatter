@@ -39,9 +39,10 @@ class LogDb:
     def __init__(self):
         self.handler = None
         self.propagate = None
+        self.logger_name = 'django.db.backends'
 
     def __call__(self, **options):
-        logger = logging.getLogger('django.db.backends')
+        logger = logging.getLogger(self.logger_name)
 
         if self.handler is None:
             # Enable
