@@ -25,10 +25,10 @@ class SqlFormatter(logging.Formatter):
     def format(self, record):
         super(SqlFormatter, self).format(record)
 
-        msg = record.msg
+        msg = record.sql
 
         if self.parse:
-            msg = sqlparse.format(record.msg, reindent=self.reindent, keyword_case=self.keyword_case)
+            msg = sqlparse.format(msg, reindent=self.reindent, keyword_case=self.keyword_case)
 
         if self.highlight:
             msg = highlight(msg, self._lexer, self._formatter)
