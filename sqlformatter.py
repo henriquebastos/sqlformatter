@@ -45,7 +45,6 @@ class LogDb:
         self.formatter = SqlFormatter(**kwargs)
 
         self.running = False
-        self.enable()
 
     def __call__(self, **options):
         # Toggle
