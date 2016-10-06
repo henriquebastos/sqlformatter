@@ -37,33 +37,45 @@ class SqlFormatter(logging.Formatter):
 
 
 class LogDb:
-    def __init__(self):
-        self.handler = None
-        self.propagate = None
+    def __init__(self, name='django.db.backends', handler=None, propagate=None, **kwargs):
+        self.name = name
+        self.propagate = propagate
+
+        self.handler = handler or logging.StreamHandler(sys.stdout)
+        self.formatter = SqlFormatter(**kwargs)
+
+        self.running = False
+        self.enable()
 
     def __call__(self, **options):
-        logger = logging.getLogger('django.db.backends')
-
-        if self.handler is None:
-            # Enable
-            self.handler = logging.StreamHandler(sys.stdout)
-            self.handler.setFormatter(SqlFormatter(**options))
-            logger.addHandler(self.handler)
-            logger.setLevel(logging.DEBUG)
-
-            self.propagate = logger.propagate
-            logger.propagate = False
+        # Toggle
+        if not self.running:
+            self.enable()
+            self.running = True
         else:
-            # Disable
-            logger.removeHandler(self.handler)
-            self.handler = None
-            logger.setLevel(logging.NOTSET)
+            self.disable()
+            self.running = False
 
-            logger.propagate = self.propagate
-            self.propagate = None
+        return self.running
 
-        return self.handler
+    def enable(self):
+        logger = logging.getLogger(self.name)
 
+        self.handler.setFormatter(self.formatter)
+        logger.addHandler(self.handler)
+        logger.setLevel(logging.DEBUG)
+
+        self.propagate = logger.propagate
+        logger.propagate = False
+
+    def disable(self):
+        logger = logging.getLogger(self.name)
+
+        logger.removeHandler(self.handler)
+        logger.setLevel(logging.NOTSET)
+
+        logger.propagate = self.propagate
+        self.propagate = None
 
 if os.name == 'nt':
     logdb = LogDb(highlight=False)
