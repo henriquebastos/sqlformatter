@@ -1,4 +1,5 @@
 # coding: utf-8
+import os
 import sys
 import logging
 import sqlparse
@@ -63,4 +64,8 @@ class LogDb:
 
         return self.handler
 
-logdb = LogDb()
+
+if os.name == 'nt':
+    logdb = LogDb(highlight=False)
+else:
+    logdb = LogDb()
