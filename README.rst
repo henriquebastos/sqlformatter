@@ -55,7 +55,7 @@ You can toggle sql output logging by calling the helper function `logdb`.
 Add it to your Django Logging settings
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You can add it to yout Django LOGGING settings:
+You can add it to your Django LOGGING settings:
 
 .. code-block:: python
 
