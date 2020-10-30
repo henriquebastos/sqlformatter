@@ -7,7 +7,7 @@ README = os.path.join(os.path.dirname(__file__), 'README.rst')
 REQUIREMENTS = os.path.join(os.path.dirname(__file__), 'requirements.txt')
 
 setup(name='sqlformatter',
-      version='1.3',
+      version='1.4',
       description='SQLFormatter: Beautiful colored SQL staments for logging',
       long_description=open(README).read(),
       author="Henrique Bastos", author_email="henrique@bastos.net",
