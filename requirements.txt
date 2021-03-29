@@ -1,2 +1,2 @@
-Pygments==1.6
+Pygments==2.7.4
 sqlparse==0.3.1
