@@ -76,7 +76,4 @@ class LogDb:
         logger.propagate = self.propagate
         self.propagate = None
 
-if os.name == 'nt':
-    logdb = LogDb(highlight=False)
-else:
-    logdb = LogDb()
+logdb = LogDb(highlight=False) if os.name == 'nt' else LogDb()
